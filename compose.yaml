@@ -1,0 +1,17 @@
+
+
+version: "2.32.4"
+
+services:
+  nats:
+    container_name: private_jetstream
+    image: synadia/nats-server:nightly
+    command: " -c /etc/nats/nats-server.conf"
+    restart: "unless-stopped"
+    volumes:
+     - ./certs/:/etc/nats/certs/
+     -  ./nats.conf:/etc/nats/nats-server.conf
+    ports:
+      - 4222:4222
+      - 80:80
+      - 443:443
