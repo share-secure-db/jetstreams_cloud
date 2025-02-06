@@ -1,0 +1,14 @@
+version: "2.32.4"
+
+services:
+  nats:
+    container_name: public_jetstream
+    image: synadia/nats-server:nightly
+    command: "-c /etc/nats/nats-server.conf"
+    restart: "unless-stopped"
+    volumes:
+      - ./nats.conf:/etc/nats/nats-server.conf
+      -  ./certs:/etc/nats/certs/
+    ports:
+      - 443:443
+      - 4222:4222
